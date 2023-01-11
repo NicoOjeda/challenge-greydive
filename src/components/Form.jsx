@@ -5,6 +5,26 @@ export default function Form() {
 
     const [data, setData] = useState([])
 
+    const [valorInicial, setValorInicial] = useState ({
+        full_name:'',
+        email: '',
+        birth_date: '',
+        country_of_origin:'',
+        terms_and_conditions:''
+    })
+
+    const capturoInput = (e)=>{
+        setValorInicial({
+            ...valorInicial,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    const guardoDatos = (e)=>{
+        e.preventDefault();
+        console.log(valorInicial);
+    }
+
     useEffect(()=>{
         fetch('/db.json')
         .then(response => response.json())
@@ -15,20 +35,24 @@ export default function Form() {
             console.log(err)
         })
     },[])
- 
-console.log(data)
+
 
 const input = (user)=> (
     <>
         <label for={user.name}>{user.label}</label>
-        <input  id={user.name} name={user.name} type={user.type} required />
+        <input  id={user.name} name={user.name} type={user.type} onChange={capturoInput} required /><br></br>
+    </>
+)  
+const submit = (user)=> (
+    <>
+        <button type={user.type}>{user.label}</button>
     </>
 )  
 
 const select = (user)=> (
     <>
-        <label for={user.name}>{user.label}</label>
-        <select name={user.name}>
+        <label for={user.name}>{user.label}</label><br></br>
+        <select name={user.name} onChange={capturoInput}>
             <option disabled value='' selected>Selecciona un país</option>
         {
             user.options.map(option => <option value={option.value}>{option.label}</option>)
@@ -40,12 +64,12 @@ const select = (user)=> (
 
   return (
     <div>
-        <form className='NewHotel-form'  >
+        <form onSubmit={guardoDatos}  >
         {
             data.map(user =>user.type === "select" ? 
              select(user) 
-             : input(user)
-
+                : user.type === "submit" ? submit(user)
+                : input(user)
             )
         }
         </form>
