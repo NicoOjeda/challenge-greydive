@@ -2,10 +2,9 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import app from '../credenciales'
 import {getFirestore, collection, addDoc} from 'firebase/firestore'
-import swal from 'sweetalert';
 import { useNavigate } from 'react-router';
 import '../styles/Form.css'
-
+import Swal from 'sweetalert2'
 
 export default function Form() {
 
@@ -36,13 +35,11 @@ export default function Form() {
                 ...valorInicial
             })
             if(valorInicial){
-                swal({
-                    title: "Excelent",
-                    text:  "usuario creado",
-                    icon: "success",
-                    timer: "3000"
-                })
-                navigate('/users')
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Usuario ingresado',
+                    html: '<a href="/users">Ver usuarios</a>'
+                  })
                }
             
         }catch(error){
