@@ -2,9 +2,9 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import app from '../credenciales'
 import {getFirestore, collection, addDoc} from 'firebase/firestore'
-import swal from 'sweetalert';
 import { useNavigate } from 'react-router';
-
+import '../styles/Form.css'
+import Swal from 'sweetalert2'
 
 export default function Form() {
 
@@ -35,13 +35,11 @@ export default function Form() {
                 ...valorInicial
             })
             if(valorInicial){
-                swal({
-                    title: "Excelent",
-                    text:  "usuario creado",
-                    icon: "success",
-                    timer: "3000"
-                })
-                navigate('/users')
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Usuario ingresado',
+                    html: '<a href="/users">Ver usuarios</a>'
+                  })
                }
             
         }catch(error){
@@ -63,41 +61,52 @@ export default function Form() {
 
 
 const input = (user)=> (
-    <>
+    <div className='Form-inputbox'>
+        <label className='Form-label' for={user.name}>{user.label}</label>
+        <input  className='Form-input' id={user.name} name={user.name} type={user.type} onChange={capturoInput} required />
+    </div>
+)  
+const check = (user)=> (
+    <div className='Form-check'>
         <label for={user.name}>{user.label}</label>
-        <input  id={user.name} name={user.name} type={user.type} onChange={capturoInput} required /><br></br>
-    </>
+        <input   className='Form-inputcheck' id={user.name} name={user.name} type={user.type} onChange={capturoInput} required />
+    </div>
 )  
 const submit = (user)=> (
     <>
-        <button type={user.type}>{user.label}</button>
+        <button className="Form-button" type={user.type}>{user.label}</button>
     </>
 )  
 
 const select = (user)=> (
-    <>
-        <label for={user.name}>{user.label}</label><br></br>
-        <select name={user.name} onChange={capturoInput}>
-            <option disabled value='' selected>Selecciona un país</option>
+    <div className='Form-inputbox'>
+        <label  for={user.name}>{user.label}</label>
+        <select className='Form-input' name={user.name} onChange={capturoInput}>
+            <option disabled value='' defaultValue>Selecciona un país</option>
         {
-            user.options.map(option => <option value={option.value}>{option.label}</option>)
+            user.options.map(option => <option  value={option.value}>{option.label}</option>)
         }
         </select>
-    </>
+    </div>
 )  
 
 
   return (
-    <div>
-        <form onSubmit={guardoDatos}  >
-        {
-            data.map(user =>user.type === "select" ? 
-             select(user) 
-                : user.type === "submit" ? submit(user)
-                : input(user)
-            )
-        }
-        </form>
+    <div className='Form-Back'>
+        <div className='Form-box'>
+            <h1 className='Form-title'>Challenge greydive.</h1>
+
+            <form onSubmit={guardoDatos} className='Form-table' >
+            {
+                data.map(user =>user.type === "select" ? 
+                select(user) 
+                    : user.type === "submit" ? submit(user)
+                    : user.type === "checkbox" ? check(user)
+                    : input(user)
+                )
+            }
+            </form>
+        </div>
     </div>
   )
 }

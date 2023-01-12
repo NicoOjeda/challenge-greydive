@@ -1,0 +1,150 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Quicksand', sans-serif;
+}
+.Form-Back{
+    background-color: #fff;
+    background-image:
+    linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+    linear-gradient(#eee .1em, transparent .1em);
+    background-size: 100% 1.2em;
+    color: white;
+    min-height: 92vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.Form-table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    font-size: 14px;
+}
+.Form-box{
+    background-color: #b863b3c2;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+    width: 35%;
+    -webkit-box-shadow: 10px 11px 29px -8px rgba(224,114,224,1);
+-moz-box-shadow: 10px 11px 29px -8px rgba(224,114,224,1);
+box-shadow: 10px 11px 29px -8px rgba(224,114,224,1);
+}
+.Form-title{
+    font-size: 30px;
+    width: 310px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+.Form-input{
+    font-style: italic;
+    border-radius: 8px;
+    padding: 0.2rem;
+    margin-top: .2rem;
+}
+.Form-check{
+    width: 90%;
+    border-radius: 10px;
+    padding: 0.2rem;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+.Form-inputbox{
+    width: 90%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.Form-label{
+    font-size: 16px;
+}
+.Form-button{
+	box-shadow:inset 0px 39px 0px -24px #e67a73;
+	background-color:#e4685d;
+	border-radius:4px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
+}
+@media (max-width: 768px) {
+    .Form-box{
+        width: 50%;
+    }
+    .Form-table{
+        width: 90%;
+    }
+    .Form-title{
+        font-size: 28px;
+       
+    }
+}
+@media (max-width: 425px) {
+    .Form-box{
+        width: 80%;
+    }
+    .Form-table{
+        width: 90%;
+    }
+    .Form-inputbox{
+        margin: 0.5rem;
+    }
+    .Form-button{
+        font-size:15px;
+        padding:3px 8px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #b23e35;
+    }
+    .Form-title{
+        font-size: 24px;
+    }
+}
+@media (max-width: 320px) {
+    .Form-box{
+        width: 95%;
+    }
+    .Form-table{
+        width: 98%;
+    }
+    .Form-inputbox{
+        margin: 0.3rem;
+    }
+    .Form-button{
+        font-size:13px;
+        padding:3px 8px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #b23e35;
+    }
+    .Form-title{
+        font-size: 20px;
+     
+    }
+    .Form-check{
+        width: 94%;
+        border-radius: 10px;
+        padding: 0.2rem;
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem;
+    }
+    .Form-label{
+        font-size: 14px;
+    }
+}
