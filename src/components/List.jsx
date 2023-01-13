@@ -25,8 +25,6 @@ useEffect(()=>{
     getLista()
 },[])
 
-console.log(lista);
-
   return (
     <div className='List-back'>
         <h1 className='List-title'>Usuarios Registrados</h1>
