@@ -103,7 +103,7 @@ const select = (user)=> (
   return (
     <div className='Form-Back'>
         <div className='Form-box'>
-            <h1 className='Form-title'>Challenge greydive.</h1>
+            <h1 className='Form-title'>Challenge React-Firebase</h1>
 
             <form onSubmit={guardoDatos} className='Form-table' >
             {
